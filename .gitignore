@@ -1,0 +1,57 @@
+# ── Python ──────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Virtual Environments ─────────────────────
+venv/
+env/
+.venv/
+ENV/
+
+# ── Dataset (too large for GitHub ~1.6GB) ────
+dataset/
+
+# ── Trained Model (large binary files) ───────
+model/*.h5
+model/*.pb
+model/saved_model/
+
+# Keep model metadata and charts
+!model/class_names.json
+!model/training_history.png
+!model/confusion_matrix.png
+
+# ── Jupyter Notebooks checkpoints ────────────
+.ipynb_checkpoints/
+
+# ── OS files ──────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE files ─────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Logs ──────────────────────────────────────
+*.log
+logs/
+model/training_log_*.csv
+
+# ── Environment variables ─────────────────────
+.env
+.env.local
+
+# ── Temporary files ───────────────────────────
+*.tmp
+*.bak

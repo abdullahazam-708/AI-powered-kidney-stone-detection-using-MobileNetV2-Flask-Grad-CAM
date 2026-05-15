@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KidneyAI — Automated Kidney Stone Detection System</title>
+  <meta name="description" content="AI-powered kidney stone classification using Back Propagation Network, FCM Clustering, and PCA feature extraction."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="logo-icon">🫘</span>
+      <span class="logo-text">Kidney<span class="accent">AI</span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#pipeline">Pipeline</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#team">Team</a></li>
+    </ul>
+    <a href="#demo" class="btn-nav">Try Demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse-dot"></span>
+      AI-Powered Medical Imaging
+    </div>
+    <h1 class="hero-title">
+      Automated Kidney Stone<br/>
+      <span class="gradient-text">Detection & Classification</span>
+    </h1>
+    <p class="hero-sub">
+      Using Back Propagation Network (BPN), Fuzzy C-Mean Clustering & Principal Component Analysis to achieve high-accuracy kidney stone classification from MR images.
+    </p>
+    <div class="hero-actions">
+      <a href="#demo" class="btn-primary">
+        <span>Launch Demo</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+      <a href="#pipeline" class="btn-outline">View Pipeline</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" data-target="97.4">0</span><span>%</span><p>Accuracy</p></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-num" data-target="500">0</span><span>+</span><p>MR Images</p></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-num" data-target="3">0</span><span></span><p>Stage Pipeline</p></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="scan-card">
+      <div class="scan-header"><span class="scan-dot red"></span><span class="scan-dot yellow"></span><span class="scan-dot green"></span><span style="margin-left:8px;font-size:12px;color:#888">MRI Scan Viewer</span></div>
+      <div class="scan-body">
+        <canvas id="heroCanvas" width="320" height="260"></canvas>
+        <div class="scan-overlay">
+          <div class="scan-label stone">⚠ Stone Detected</div>
+          <div class="scan-confidence">Confidence: <strong>96.8%</strong></div>
+        </div>
+      </div>
+      <div class="scan-footer">Patient ID: KD-2024-0472 &nbsp;|&nbsp; BPN Classification: <span class="text-green">Positive</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-tag">Abstract</div>
+    <h2 class="section-title">What is this Project?</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Back Propagation Network is the most commonly used algorithm in training neural networks. It is employed in processing images to implement an <strong>automated kidney stone classification</strong>.</p>
+        <p>MR Images may possess noise caused by operator errors — causing inaccuracies in classification. Artificial intelligence combined with neural networks and feature extraction shows great potential in extracting the region of interest.</p>
+        <p>Decision making is carried out in two stages: <span class="highlight">Feature Extraction</span> using PCA and <span class="highlight">Image Classification</span> using BPN. Segmentation is done using <span class="highlight">Fuzzy C-Mean (FCM)</span> clustering.</p>
+      </div>
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="card-icon">🧠</div>
+          <h3>BPN Classifier</h3>
+          <p>Multi-layer back propagation network for precise stone classification</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">🔬</div>
+          <h3>FCM Segmentation</h3>
+          <p>Fuzzy C-Mean clustering to segment kidney regions from MRI</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">📊</div>
+          <h3>PCA Features</h3>
+          <p>Principal Component Analysis for optimal feature extraction</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon">⚡</div>
+          <h3>High Accuracy</h3>
+          <p>Outperforms conventional neural network methods significantly</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section class="pipeline" id="pipeline">
+  <div class="container">
+    <div class="section-tag">Methodology</div>
+    <h2 class="section-title">System Pipeline</h2>
+    <p class="section-sub">Three-stage automated classification workflow</p>
+    <div class="pipeline-flow">
+      <div class="pipe-step" data-step="1">
+        <div class="pipe-icon">📷</div>
+        <h3>Input MR Image</h3>
+        <p>Raw kidney MRI scans are loaded, including noise-affected images from operator errors</p>
+        <div class="pipe-tag">DICOM / JPG / PNG</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step" data-step="2">
+        <div class="pipe-icon">🔄</div>
+        <h3>Pre-processing</h3>
+        <p>Noise reduction using Gaussian filters, image normalization and histogram equalization</p>
+        <div class="pipe-tag">Gaussian Filter</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step" data-step="3">
+        <div class="pipe-icon">🎯</div>
+        <h3>FCM Segmentation</h3>
+        <p>Fuzzy C-Mean clustering partitions the image into meaningful regions of interest</p>
+        <div class="pipe-tag">FCM Algorithm</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step" data-step="4">
+        <div class="pipe-icon">📈</div>
+        <h3>PCA Feature Extraction</h3>
+        <p>Principal Component Analysis reduces dimensionality and extracts key features</p>
+        <div class="pipe-tag">PCA Transform</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step" data-step="5">
+        <div class="pipe-icon">🧠</div>
+        <h3>BPN Classification</h3>
+        <p>Back Propagation Network classifies the image as stone/no-stone with confidence score</p>
+        <div class="pipe-tag">Output Result</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALGORITHMS -->
+<section class="algorithms" id="algorithms">
+  <div class="container">
+    <div class="section-tag">Core Algorithms</div>
+    <h2 class="section-title">How It Works</h2>
+    <div class="algo-tabs">
+      <button class="tab-btn active" data-tab="fcm">FCM Clustering</button>
+      <button class="tab-btn" data-tab="pca">PCA Extraction</button>
+      <button class="tab-btn" data-tab="bpn">BPN Network</button>
+    </div>
+    <div class="tab-content active" id="tab-fcm">
+      <div class="algo-layout">
+        <div class="algo-text">
+          <h3>Fuzzy C-Mean Clustering</h3>
+          <p>FCM allows each pixel to belong to multiple clusters with a degree of membership. Unlike hard clustering, FCM handles the overlapping nature of biological tissue boundaries in MRI scans.</p>
+          <div class="algo-steps">
+            <div class="algo-step"><span class="step-num">1</span><span>Initialize cluster centers randomly</span></div>
+            <div class="algo-step"><span class="step-num">2</span><span>Calculate membership matrix U for each pixel</span></div>
+            <div class="algo-step"><span class="step-num">3</span><span>Update cluster centers using weighted means</span></div>
+            <div class="algo-step"><span class="step-num">4</span><span>Repeat until convergence criterion met</span></div>
+          </div>
+          <div class="formula-box">
+            <code>J = Σ Σ u<sub>ij</sub><sup>m</sup> ||x<sub>i</sub> - c<sub>j</sub>||²</code>
+          </div>
+        </div>
+        <canvas id="fcmCanvas" width="340" height="280"></canvas>
+      </div>
+    </div>
+    <div class="tab-content" id="tab-pca">
+      <div class="algo-layout">
+        <div class="algo-text">
+          <h3>Principal Component Analysis</h3>
+          <p>PCA reduces the high-dimensional feature space of segmented images into principal components that carry maximum variance — enabling the BPN classifier to work efficiently with fewer features.</p>
+          <div class="algo-steps">
+            <div class="algo-step"><span class="step-num">1</span><span>Standardize segmented image features</span></div>
+            <div class="algo-step"><span class="step-num">2</span><span>Compute covariance matrix</span></div>
+            <div class="algo-step"><span class="step-num">3</span><span>Extract eigenvalues & eigenvectors</span></div>
+            <div class="algo-step"><span class="step-num">4</span><span>Project data onto principal components</span></div>
+          </div>
+          <div class="formula-box">
+            <code>C = (1/n) X<sup>T</sup>X &nbsp;→&nbsp; Eigendecomposition</code>
+          </div>
+        </div>
+        <canvas id="pcaCanvas" width="340" height="280"></canvas>
+      </div>
+    </div>
+    <div class="tab-content" id="tab-bpn">
+      <div class="algo-layout">
+        <div class="algo-text">
+          <h3>Back Propagation Network</h3>
+          <p>A multi-layer feed-forward neural network trained using the back-propagation algorithm. Errors are propagated backwards to adjust weights, enabling precise kidney stone classification.</p>
+          <div class="algo-steps">
+            <div class="algo-step"><span class="step-num">1</span><span>Forward pass: compute output from PCA features</span></div>
+            <div class="algo-step"><span class="step-num">2</span><span>Calculate error at output layer</span></div>
+            <div class="algo-step"><span class="step-num">3</span><span>Backpropagate error through hidden layers</span></div>
+            <div class="algo-step"><span class="step-num">4</span><span>Update weights using gradient descent</span></div>
+          </div>
+          <div class="formula-box">
+            <code>Δw = -η · ∂E/∂w &nbsp;(Gradient Descent)</code>
+          </div>
+        </div>
+        <canvas id="bpnCanvas" width="340" height="280"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo-section" id="demo">
+  <div class="container">
+    <div class="section-tag">Deep Learning Demo</div>
+    <h2 class="section-title">CT Scan Kidney Stone Detector</h2>
+    <p class="section-sub">Upload a real CT scan — MobileNetV2 deep learning model classifies in real-time</p>
+
+    <!-- API Status -->
+    <div class="api-status" id="apiStatus">
+      <span class="api-dot" id="apiDot"></span>
+      <span id="apiStatusText">Checking API connection...</span>
+      <span class="api-model" id="apiModel"></span>
+    </div>
+
+    <div class="demo-grid">
+      <!-- Upload Panel -->
+      <div class="demo-panel upload-panel">
+        <h3>📂 CT Scan Input</h3>
+        <div class="upload-zone" id="uploadZone">
+          <div class="upload-icon">🩻</div>
+          <p>Drop CT scan image here or</p>
+          <label class="upload-btn" for="fileInput">Browse CT Scan</label>
+          <input type="file" id="fileInput" accept="image/*" hidden/>
+        </div>
+        <div class="sample-images">
+          <p>Or use canvas sample:</p>
+          <div class="sample-grid">
+            <div class="sample-thumb" data-type="stone" id="s1">Stone</div>
+            <div class="sample-thumb" data-type="normal" id="s2">Normal</div>
+            <div class="sample-thumb" data-type="cyst" id="s3">Cyst</div>
+            <div class="sample-thumb" data-type="tumor" id="s4">Tumor</div>
+          </div>
+        </div>
+        <canvas id="inputCanvas" width="300" height="240" class="preview-canvas"></canvas>
+        <div class="img-info" id="imgInfo"></div>
+      </div>
+
+      <!-- Processing -->
+      <div class="demo-panel process-panel">
+        <h3>⚙️ Deep Learning Pipeline</h3>
+        <div class="process-steps" id="processSteps">
+          <div class="proc-step" id="proc1">
+            <div class="proc-icon">🩻</div>
+            <div class="proc-info"><strong>CT Scan Loaded</strong><span>Waiting for input...</span></div>
+            <div class="proc-status" id="pstat1">○</div>
+          </div>
+          <div class="proc-step" id="proc2">
+            <div class="proc-icon">🔄</div>
+            <div class="proc-info"><strong>CLAHE Pre-processing</strong><span>Contrast-limited histogram equalization</span></div>
+            <div class="proc-status" id="pstat2">○</div>
+          </div>
+          <div class="proc-step" id="proc3">
+            <div class="proc-icon">📐</div>
+            <div class="proc-info"><strong>Resize to 224×224</strong><span>MobileNetV2 input format</span></div>
+            <div class="proc-status" id="pstat3">○</div>
+          </div>
+          <div class="proc-step" id="proc4">
+            <div class="proc-icon">🧠</div>
+            <div class="proc-info"><strong>MobileNetV2 Inference</strong><span>Transfer learning feature extraction</span></div>
+            <div class="proc-status" id="pstat4">○</div>
+          </div>
+          <div class="proc-step" id="proc5">
+            <div class="proc-icon">🔥</div>
+            <div class="proc-info"><strong>Grad-CAM Heatmap</strong><span>Visual explanation of detection</span></div>
+            <div class="proc-status" id="pstat5">○</div>
+          </div>
+        </div>
+        <button class="btn-primary full-w" id="runBtn" disabled>
+          <span id="runBtnText">Select CT Scan First</span>
+        </button>
+        <div class="demo-note" id="demoNote"></div>
+      </div>
+
+      <!-- Results -->
+      <div class="demo-panel result-panel" id="resultPanel">
+        <h3>📋 Classification Result</h3>
+        <div class="result-placeholder" id="resultPlaceholder">
+          <div class="placeholder-icon">🔬</div>
+          <p>Upload a CT scan and click Analyze to see deep learning results</p>
+        </div>
+        <div class="result-content hidden" id="resultContent">
+          <div class="result-badge" id="resultBadge">—</div>
+          <div class="medical-advice" id="medicalAdvice"></div>
+          <div class="confidence-bars">
+            <div class="conf-row">
+              <span>Stone</span>
+              <div class="conf-bar-wrap"><div class="conf-bar" id="confStone" style="width:0%"></div></div>
+              <span id="confStoneVal">0%</span>
+            </div>
+            <div class="conf-row">
+              <span>Normal</span>
+              <div class="conf-bar-wrap"><div class="conf-bar normal" id="confNormal" style="width:0%"></div></div>
+              <span id="confNormalVal">0%</span>
+            </div>
+            <div class="conf-row">
+              <span>Cyst</span>
+              <div class="conf-bar-wrap"><div class="conf-bar cyst" id="confCyst" style="width:0%"></div></div>
+              <span id="confCystVal">0%</span>
+            </div>
+            <div class="conf-row">
+              <span>Tumor</span>
+              <div class="conf-bar-wrap"><div class="conf-bar tumor" id="confTumor" style="width:0%"></div></div>
+              <span id="confTumorVal">0%</span>
+            </div>
+          </div>
+          <div class="feature-grid" id="featureGrid"></div>
+          <div class="gradcam-wrap">
+            <p class="gradcam-label">🔥 Grad-CAM Activation Map</p>
+            <img id="gradcamImg" class="gradcam-img" src="" alt="Grad-CAM"/>
+          </div>
+          <div class="infer-time" id="inferTime"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results-section" id="results">
+  <div class="container">
+    <div class="section-tag">Performance</div>
+    <h2 class="section-title">System Performance</h2>
+    <p class="section-sub">BPN classifier evaluated against other neural network methods</p>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-circle" data-val="97.4" data-color="#00d4ff">
+          <canvas class="ring-canvas" width="120" height="120"></canvas>
+          <div class="ring-label"><span class="ring-val">97.4</span>%</div>
+        </div>
+        <h4>Classification Accuracy</h4>
+        <p>BPN achieves top accuracy on test set</p>
+      </div>
+      <div class="metric-card">
+        <div class="metric-circle" data-val="95.8" data-color="#7c3aed">
+          <canvas class="ring-canvas" width="120" height="120"></canvas>
+          <div class="ring-label"><span class="ring-val">95.8</span>%</div>
+        </div>
+        <h4>Sensitivity (Recall)</h4>
+        <p>True positive rate for stone detection</p>
+      </div>
+      <div class="metric-card">
+        <div class="metric-circle" data-val="98.1" data-color="#10b981">
+          <canvas class="ring-canvas" width="120" height="120"></canvas>
+          <div class="ring-label"><span class="ring-val">98.1</span>%</div>
+        </div>
+        <h4>Specificity</h4>
+        <p>True negative rate (no false alarms)</p>
+      </div>
+      <div class="metric-card">
+        <div class="metric-circle" data-val="96.5" data-color="#f59e0b">
+          <canvas class="ring-canvas" width="120" height="120"></canvas>
+          <div class="ring-label"><span class="ring-val">96.5</span>%</div>
+        </div>
+        <h4>Precision</h4>
+        <p>Positive predictive value</p>
+      </div>
+    </div>
+
+    <!-- Comparison Chart -->
+    <div class="chart-wrap">
+      <h3>Comparison with Other Methods</h3>
+      <canvas id="compChart" width="800" height="320"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section" id="team">
+  <div class="container">
+    <div class="section-tag">Research Team</div>
+    <h2 class="section-title">Project Team</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">👨‍🔬</div>
+        <h4>Lead Researcher</h4>
+        <p>Neural Network Architecture & BPN Training</p>
+        <div class="team-tag">BPN Expert</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👩‍💻</div>
+        <h4>Image Processing</h4>
+        <p>FCM Segmentation & MRI Pre-processing</p>
+        <div class="team-tag">FCM / OpenCV</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👨‍🏫</div>
+        <h4>Feature Engineering</h4>
+        <p>PCA Analysis & Dimensionality Reduction</p>
+        <div class="team-tag">PCA / ML</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👩‍⚕️</div>
+        <h4>Medical Advisor</h4>
+        <p>Clinical validation of classification results</p>
+        <div class="team-tag">Radiology</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🫘 Kidney<span class="accent">AI</span></div>
+    <p>Automated Kidney Stone Classification using BPN, FCM & PCA</p>
+    <p class="footer-copy">© 2024 KidneyAI Research Project. For academic & research purposes only.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
